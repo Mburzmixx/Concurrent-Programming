@@ -1,4 +1,4 @@
-// Author: Mateusz Burza, mb469200
+// Author: Mateusz Burza
 #include "linkedList.h"
 
 #include <stdio.h>
