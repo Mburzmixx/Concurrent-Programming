@@ -171,7 +171,7 @@ int init_plant(int* stations, int n_stations, int n_workers)
   return PLANTOK;
 }
 
-int destroy_plant()
+int destroy_plant(void)
 {
   if (!atomic_load(&is_plant_working)) {
     return ERROR;
@@ -310,7 +310,7 @@ int collect_task(task_t* t)
 }
 
 // Called without (!) `mutex`, return the size of `tasks_to_add` post factum.
-static inline size_t try_to_add_tasks()
+static inline size_t try_to_add_tasks(void)
 {
   ASSERT_ZERO(pthread_mutex_lock(&mutex));
 
@@ -371,6 +371,8 @@ static inline void clear_not_wanted_tasks(list_t* list)
 
 static void* task_master_main(void* data)
 {
+  // `*data` is NULL.
+
   while (atomic_load(&is_plant_working)) {
     sleep(1);
 
@@ -487,7 +489,7 @@ static inline void assign_workers(i_task_t* i_task, size_t station)
 }
 
 // Called without (!) `mutex`.
-static inline void try_assign_tasks()
+static inline void try_assign_tasks(void)
 {
   ASSERT_ZERO(pthread_mutex_lock(&mutex));
 
@@ -553,6 +555,7 @@ static inline void try_assign_tasks()
 
 static void* hr_master_main(void* data)
 {
+  // `*data` is NULL.
   while (!atomic_load(&end_of_tasks)) {
     sleep(1);
 
@@ -673,17 +676,17 @@ static void* worker_main(void* data)
   return NULL;
 }
 
-static int max(int a, int b)
+static inline int max(int a, int b)
 {
   return (a > b) ? a : b;
 }
 
-static int min(int a, int b)
+static inline int min(int a, int b)
 {
   return (a > b) ? b : a;
 }
 
-static void cleanup_structures()
+static void cleanup_structures(void)
 {
   ASSERT_ZERO(pthread_mutex_destroy(&mutex));
   ASSERT_ZERO(pthread_cond_destroy(&smth_to_add));
