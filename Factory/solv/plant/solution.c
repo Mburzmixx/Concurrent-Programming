@@ -1,5 +1,5 @@
-// Author: Mateusz Burza
-#include "linkedQueue.h"
+// Author: Mateusz Burza, mb469200
+#include "linkedList.h"
 
 #include <stdio.h>
 #include <stdatomic.h>

@@ -1,6 +1,6 @@
 // Author: Mateusz Burza
-#ifndef MB_LINKEDQUEUE_H
-#define MB_LINKEDQUEUE_H
+#ifndef MB_LINKEDLIST_H
+#define MB_LINKEDLIST_H
 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -71,4 +71,4 @@ void remove_node(list_t* list, node_t* node);
 // If can't find such i_task, returns `NULL`.
 i_task_t* get_i_task(list_t* list, task_t* task);
 
-#endif //MB_LINKEDQUEUE_H
+#endif //MB_LINKEDLIST_H

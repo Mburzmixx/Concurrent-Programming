@@ -1,5 +1,5 @@
 // Author: Mateusz Burza
-#include "linkedQueue.h"
+#include "linkedList.h"
 
 int list_init(list_t* list)
 {
