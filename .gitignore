@@ -1,0 +1,7 @@
+# Build outputs
+**/target/
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
